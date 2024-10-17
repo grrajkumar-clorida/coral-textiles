@@ -1,0 +1,25 @@
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" class="form-control" id="name" name="name" required>
+    </div>
+    <div class="form-group">
+        <label for="date">Date:</label>
+        <input type="date" class="form-control" id="date" name="date" required>
+    </div>
+    <div class="form-group">
+        <label for="machine_id">Machine ID:</label>
+        <select class="form-control" id="machine_id" name="machine_id">
+            {% for machine in machines %}
+                <option value="{{ machine.id }}">{{ machine.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="lot_size">Lot Size:</label>
+        <input type="number" class="form-control" id="lot_size" name="lot_size" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

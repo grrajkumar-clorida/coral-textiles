@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2 class="text-center mt-4">Production Report</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+            	<th>Id</th>
+            	<th>Operator</th>
+                <th>Shift</th>
+                <th>Vendor</th>
+                <th>Machine</th>
+                <th>Fabric</th>
+                <th>From Date</th>
+                <th>To Date</th>
+                <th>Image</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for production in productions %}
+            <tr>
+                <td>{{ production.id }}</td>
+                <td>{{ production.employee.name }}</td>
+                <td>{{ production.shift }}</td>
+                <td>{{ production.vendor.name }}</td>
+                <td>{{ production.machine.name }}</td>
+                <td>{{ production.fabric }}</td>
+                <td>{{ production.from_date }}</td>
+                <td>{{ production.to_date }}</td>
+                <td>
+                    {% if production.image %}
+                        <img src="{{ production.image.url }}" alt="Production Image" width="100">
+                    {% else %}
+                        No Image
+                    {% endif %}
+                </td>
+                <td>In Progross</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="6" class="text-center">No production records found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
