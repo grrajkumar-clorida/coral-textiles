@@ -12,6 +12,9 @@ from django.contrib import messages
 def home(request):
 	return render(request, 'home.html')
 
+def about_us(request):
+	return render(request, 'about_us.html')
+
 @login_required
 def log_report(request):
     #return render(request, 'home.html')
@@ -52,3 +55,5 @@ def user_login(request):
 def user_logout(request):
     logout(request)
     return redirect('login')
+
+

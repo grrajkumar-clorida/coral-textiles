@@ -21,5 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('employee.urls')),  # Use 'employee' as the main app for the home view
     path('', include('production.urls')),
+    path('', include('vendors.urls')),
 
 ]

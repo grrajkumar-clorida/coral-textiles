@@ -1,3 +1,6 @@
+body { background:#F5F5F5; color: #333333; font-size: 1.2rem}
+.logo { width:150px; }
+.logo img { width:100%; }
 #production-report label { min-width:200px; }
 #production-report select, input[type="date"] { min-width:200px; padding: 8px 10px; }
 #production-report input[type="text"] { max-width:200px; padding:4px; }
@@ -10,8 +13,12 @@ input:valid + span::after, select:valid + span::after { content: "✓"; font-siz
 
 
 /****** Header *****/
-.navbar {color:#fff; background-color:#929fba; }
+.navbar { background-color:#929fba  } /*#14A44D; */
+.btn-primary { background-color:#929fba}
+.navbar-nav .nav-link { font-weight: bold;}
 /******* Footer *********/
+footer { margin-top:10px; }
+.footer-pg {text-align: left;}
 .site-footer
 {
   background-color:#26272b;
