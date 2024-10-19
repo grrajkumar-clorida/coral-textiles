@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-g7v9a%lu0_nm9%818a+9so5c%cgsw&r0@-9i6bzdnqq9x=+te8
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.railway.app', '.grrajkumar.in']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.railway.app', '.grrajkumar.in', '.pythonanywhere.com']
 AUTH_USER_MODEL = 'employee.Employees'
 LOGIN_REDIRECT_URL = 'home'  # Redirect to home after login
 LOGOUT_REDIRECT_URL = 'login'  # Redirect to login after logout
