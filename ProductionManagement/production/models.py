@@ -49,3 +49,55 @@ class Production(models.Model):
 		#return f"{self.vendor.name} - {self.machine.name} - {self.fabric} - {self.status}"
 
 
+class Dpsreport(models.Model):
+	SHIFT_CHOICES = [
+	('Day','Day'),
+	('Night','Night'),
+	('Over Night','Over Night'),
+	]
+
+	dia = models.CharField(max_length=35)
+	operator_name = models.ForeignKey(Employees, on_delete=models.CASCADE)
+	date = models.DateField(blank=True, null=True)
+	shift = models.CharField(max_length=25, choices=SHIFT_CHOICES)
+	party_name = models.ForeignKey(Vendor, on_delete=models.CASCADE)
+	job_dc_no = models.ForeignKey(Production, on_delete=models.CASCADE)
+	mr_mill_counts = models.CharField(max_length=35)
+	mr_lot_no = models.CharField(max_length=35)
+	mr_lycra_denier = models.CharField(max_length=35)
+	mr_mill_plyester = models.CharField(max_length=35)
+	prgm_dia = models.CharField(max_length=35)
+	prgm_gsm = models.CharField(max_length=35)
+	prgm_lopp_length = models.CharField(max_length=35)
+	prgm_knitting_type = models.CharField(max_length=35)
+	fabric_quality = models.CharField(max_length=35)
+	co_ordinator = models.CharField(max_length=35)
+	qc_instruction = models.CharField(max_length=35)
+	roll_no = models.CharField(max_length=35)
+	start_time = models.DateField(blank=True, null=True)
+	end_time = models.DateField(blank=True, null=True)
+	weight = models.CharField(max_length=35)
+	machine_counting = models.CharField(max_length=35)
+	holes = models.CharField(max_length=35)
+	set_off = models.CharField(max_length=35)
+	lycra_jump = models.CharField(max_length=35)
+	lycra_cut = models.CharField(max_length=35)
+	polyester_mis_cut = models.CharField(max_length=35)
+	contamination = models.CharField(max_length=35)
+	thickyarn = models.CharField(max_length=35)
+	needle_line = models.CharField(max_length=35)
+	oil_line = models.CharField(max_length=35)
+	needel_br_t1 = models.CharField(max_length=35)
+	needel_br_t2 = models.CharField(max_length=35)
+	needel_br_t3 = models.CharField(max_length=35)
+	needel_br_s = models.CharField(max_length=35)
+	remarks = models.CharField(max_length=35)
+	order_qty = models.CharField(max_length=35)
+	completed_qty = models.CharField(max_length=35)
+	balance_qty = models.CharField(max_length=35)
+	created_at = models.DateTimeField(default=timezone.now)
+	updated_at = models.DateTimeField(blank=True, null=True)
+
+	def __str__(self):
+		return f"{self.operator_name.name} - {self.party_name.name} - {self.job_dc_no} - {self.shift}"
+

@@ -10,7 +10,6 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 import os
-
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -83,11 +82,24 @@ WSGI_APPLICATION = 'ProductionManagement.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
+# Set default values for the environment variables if they’re not already set
+os.environ.setdefault("PGDATABASE", "railway")
+os.environ.setdefault("PGUSER", "root")
+os.environ.setdefault("PGPASSWORD", "IDYArWJWsjQDSUpICeGUiglTwhUivjLd")
+os.environ.setdefault("PGHOST", "mysql.railway.internal")
+os.environ.setdefault("PGPORT", "3306")
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': os.environ["PGDATABASE"],
+        'USER': os.environ["PGUSER"],
+        'PASSWORD': os.environ["PGPASSWORD"],
+        'HOST': os.environ["PGHOST"],
+        'PORT': os.environ["PGPORT"],
+        'OPTIONS': {
+            'unix_socket': '/var/run/mysqld/mysqld.sock',  # Match your MySQL socket path
+        },
     }
 }
 

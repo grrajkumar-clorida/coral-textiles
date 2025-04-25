@@ -4,6 +4,11 @@
     Dashboard - My Site
 {% endblock %}
 
+{% for employee in employees %}
+    {{ employee.id }}
+    {{ user.name }}
+{% endfor %}
+
 {% block content %}
     <h1>Welcome to the Coral Textils India</h1>
     <p>This is your dashboard content.</p>

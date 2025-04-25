@@ -43,6 +43,9 @@
                 <li class="nav-item">
                   <a class="nav-link text-white" title="Contct Corla Textiles"href="{% url 'contact_us' %}">Contact Us</a>
                 </li>
+                <li class="nav-item">
+                  <a class="nav-link text-white" title="Daily Production Status Report"href="{% url 'dpsr_log' %}">DPS Report</a>
+                </li>
                 {% if user.is_authenticated %}
                   <li class="nav-item"><a class="nav-link text-white" title="Daily Production Report" href="{% url 'log_report' %}">DPR</a></li>
                   <li class="nav-item"><a class="nav-link text-white" title="Product Report" href="{% url 'production_report' %}">Production Report</a></li>

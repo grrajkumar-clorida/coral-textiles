@@ -1,6 +1,24 @@
-asgiref==3.8.1
-Django==4.2.16
-gunicorn==23.0.0
-packaging==24.1
-pillow==11.0.0
-sqlparse==0.5.1
+cffi @ file:///tmp/abs_98z5h56wf8/croots/recipe/cffi_1659598650955/work
+charset-normalizer @ file:///croot/charset-normalizer_1721748349566/work
+cryptography @ file:///croot/cryptography_1694444244250/work
+exceptiongroup==1.2.2
+iniconfig==2.1.0
+numpy==2.2.4
+opencv-python==4.11.0.86
+packaging==24.2
+pandas==2.2.3
+pdf2image==1.17.0
+pdfminer.six @ file:///home/conda/feedstock_root/build_artifacts/pdfminer.six_1703854269349/work
+pdfplumber @ file:///home/conda/feedstock_root/build_artifacts/pdfplumber_1735886669036/work
+pillow @ file:///croot/pillow_1731594689713/work
+pluggy==1.5.0
+pycparser @ file:///tmp/build/80754af9/pycparser_1636541352034/work
+pypdfium2 @ file:///home/conda/feedstock_root/build_artifacts/bld/rattler-build_pypdfium2_1739979070/work
+pytesseract==0.3.13
+pytest==8.3.5
+python-dateutil==2.9.0.post0
+pytz==2025.2
+six==1.17.0
+tomli==2.2.1
+tzdata==2025.2
+Wand @ file:///home/conda/feedstock_root/build_artifacts/wand_1661205278277/work

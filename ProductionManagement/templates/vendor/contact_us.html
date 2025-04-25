@@ -3,20 +3,26 @@
 {% block content %}
 <div class="container">
     <h1>Contact Us</h1>
-    <div class="notifications">
-        {% if messages %}
-        <ul>
-            {% for message in messages %}
-                <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
+    <div class="row">
+    <div class="col-md-4">
+        <div class="notifications">
+            {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        </div>
+        <form method="post" id="contact-leade" class="form-dpsr">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Contact</button>
+        </form>    
     </div>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">Contact</button>
-    </form>    
+    <div class="col-md-6 ml-auto">
+        <div><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d295.3617185989053!2d77.32790348425937!3d11.09730815132428!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba907b35f90aa4b%3A0xecefbaca4412b96d!2sAGC!5e1!3m2!1sen!2sin!4v1730612963494!5m2!1sen!2sin" width="600" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+    </div>
+    </div>
 </div>
 {% endblock %}
-pyt

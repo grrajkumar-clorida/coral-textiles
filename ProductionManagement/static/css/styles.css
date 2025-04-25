@@ -2,16 +2,33 @@ body { background:#F5F5F5; color: #333333; font-size: 1.2rem}
 .logo { width:150px; }
 .logo img { width:100%; }
 #production-report label { min-width:200px; }
-#production-report select, input[type="date"] { min-width:200px; padding: 8px 10px; }
-#production-report input[type="text"] { max-width:200px; padding:4px; }
-
+.form-dpsr select, input[type="date"] { min-width:60%; padding: 8px 10px; }
+.form-dpsr input[type="text"], .form-dpsr input[type="date"] { max-width:60%; padding:4px; }
+#contact-leade label { min-width:60px; }
 span::after { padding-left: 5px; font-size: 8px; }
 
 input:invalid + span::after, select:invalid + span::after { content: "✖"; }
 
 input:valid + span::after, select:valid + span::after { content: "✓"; font-size:12px; }
+.form-group >input, .form-group >label{
+  display: inline-block;
+}
+/*
+.form-group mr-4{
+  padding:10px;
+  border:2px solid rgba(0, 0, 0, 0.2);
+  margin:10px;
+}
+.form-group mr-4>label{
+  position: relative;
+  top:-30px;
+  left:20px;
+  background-color:#F5F5F5;
+}
 
-
+.form-group mr-4>input{
+  border:none;
+} */
 /****** Header *****/
 .navbar { background-color:#929fba  } /*#14A44D; */
 .btn-primary { background-color:#929fba}
@@ -102,6 +119,7 @@ footer { margin-top:10px; }
 }
 @media (max-width:767px)
 {
+  .form-dpsr input[type="text"],.form-dpsr input[type="date"], .form-dpsr select  { max-width:100%; width:94%; margin-top:10px; }
   .site-footer
   {
     padding-bottom:0
