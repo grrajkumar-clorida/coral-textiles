@@ -91,12 +91,13 @@ WSGI_APPLICATION = 'ProductionManagement.wsgi.application'
 os.environ.setdefault("PGDATABASE", ${{ MYSQL_DATABASE }})
 os.environ.setdefault("PGUSER", ${{ MYSQLUSER }})
 os.environ.setdefault("PGPASSWORD", ${{ MYSQL_ROOT_PASSWORD }})
-os.environ.setdefault("PGHOST", ${{ MYSQLPORT }})
+os.environ.setdefault("PGHOST", ${{ MYSQLHOST }})
 os.environ.setdefault("PGPORT", ${{ MYSQLPORT }})
+os.environ.setdefault("PGENGINE", ${{ MYSQL_PUBLIC_URL }})
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': os.environ["PGENGINE"],
         'NAME': os.environ["PGDATABASE"],
         'USER': os.environ["PGUSER"],
         'PASSWORD': os.environ["PGPASSWORD"],
