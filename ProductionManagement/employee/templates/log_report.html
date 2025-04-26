@@ -3,54 +3,54 @@
 {% block content %}
 <div class="container">
     <h2 class="text-center mt-4">Add Production Details</h2>
-    <form method="POST" enctype="multipart/form-data" id="production-report">
+    <form method="POST" enctype="multipart/form-data" id="production-report" class="form-dpsr">
         {% csrf_token %}
-        <div class="form-group">
+        <div class="form-group mr-4">
             <label for="shift">Shift</label>
             {{ form.shift }}
             <span class="validity"></span>
         </div>
-        <div class="form-group">
+        <div class="form-group mr-4">
             <label for="employee">Operator</label>
             {{ form.employee }}
             <span class="validity"></span>
         </div>
-        <div class="form-group">
+        <div class="form-group mr-4">
             <label for="vendor">Vendor</label>
             {{ form.vendor }}
             <span class="validity"></span>
         </div>
-        <div class="form-group">
+        <div class="form-group mr-4">
             <label for="name">Name</label>
             {{ form.name }}
             <span class="validity"></span>
         </div>
-        <div class="form-group">
+        <div class="form-group mr-4">
             <label for="machine">Machine</label>
             {{ form.machine }}
             <span class="validity"></span>
         </div>
-        <div class="form-group">
+        <div class="form-group mr-4">
             <label for="fabric">Fabric</label>
             {{ form.fabric }} <!-- New dropdown field -->
             <span class="validity"></span>
         </div>
-        <div class="form-group">
+        <div class="form-group mr-4">
             <label for="image">Image</label>
             {{ form.image }}
             <!-- <span class="validity"></span> -->
         </div>
-        <div class="form-group">
+        <div class="form-group mr-4">
             <label for="from_date">From Date</label>
             {{ form.from_date }}
             <span class="validity"></span>
         </div>
-        <div class="form-group">
+        <div class="form-group mr-4">
             <label for="to_date">To Date</label>
             {{ form.to_date }}
             <span class="validity"></span>
         </div>
-        <div class="form-group">
+        <div class="form-group mr-4">
             <label for="to_date">Status</label>
             {{ form.status }}
             <span class="validity"></span>

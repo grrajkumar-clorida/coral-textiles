@@ -4,13 +4,13 @@
 <div class="row justify-content-center">
     <div class="col-md-4">
         <h2 class="text-center">Login</h2>
-        <form method="POST">
+        <form method="POST" class="form-dpsr" id="login-form">
             {% csrf_token %}
-            <div class="form-group">
+            <div class="form-group mr-4">
                 <label for="username">Username:</label>
                 <input type="text" class="form-control" id="username" name="username" required>
             </div>
-            <div class="form-group">
+            <div class="form-group mr-4">
                 <label for="password">Password:</label>
                 <input type="password" class="form-control" id="password" name="password" required>
             </div>

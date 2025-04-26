@@ -1,8 +1,9 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.contrib.auth import logout
-from .models import Employees
+#from .models import Employees
 from production.models import Production
 from production.forms import ProductionForm
 from django.utils import timezone
@@ -10,7 +11,14 @@ from django.contrib import messages
 
 # Create your views here.
 def home(request):
-	return render(request, 'home.html')
+    uid, pid = 'bhuvi', 'demo@123'
+    user = authenticate(username=uid, password=pid)
+    if user is not None:
+        print("User authenticated successfully")
+    else:
+        print("Invalid username or password")
+    #employees = User.objects.all()
+    return render(request, 'home.html')
 
 def about_us(request):
 	return render(request, 'about_us.html')

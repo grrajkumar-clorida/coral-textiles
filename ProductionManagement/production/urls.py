@@ -8,9 +8,11 @@ from django.conf import settings
 
 urlpatterns = [
 	path('', views.production_list, name='fabric'),
-	path('admin/', admin.site.urls),
+#	path('admin/', admin.site.urls),
     path('', include('employee.urls')),
+    path('dpsr/', views.dpsr_log, name='dpsr_log'),
 	#path('post/<int:pk>/', views.post_detail, name='post_detail'),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
 

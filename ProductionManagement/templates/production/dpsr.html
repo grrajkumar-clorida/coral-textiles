@@ -1,0 +1,225 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 class="m-5">Daily Production Status Report</h1>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="notifications">
+                {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            <!-- <ul>
+                {% for field in form %}
+                    <li>
+                        {{ field.errors }}
+                    </li>
+                {% endfor %}
+            </ul> -->
+            </div>
+
+            <form method="post" id="dpsr-form" enctype="multipart/form-data" class="form-dpsr inline form-horizontal">
+                {% csrf_token %}
+                <div class="form-group mx-4">
+                    <label class="col-sx-4 col-sm-4 control-label" for="dia">Dia</label>
+                    <input type="text" class="col-sm-8 form-control" id="dia" name="dia" required>
+                    <span class="validity"></span>
+                </div>
+                <div class="form-group mx-4">
+                    <label class="col-sm-4 control-label" for="date">Date</label>
+                    <input type="date" class="col-sm-8 form-control" id="date" name="date" required>
+                    <span class="validity"></span>
+                </div>
+                <div class="form-group mx-4">
+                    <label class="col-sm-4 control-label" for="id_operator_name">Operator Name: </label>
+                    {{ form.operator_name }}
+                    <span class="validity"></span>
+                </div>                
+                <div class="form-group mx-4">
+                    <label class="col-sm-4 control-label" for="id_shift">Shift Time: </label>
+                    {{ form.shift }}
+                    <span class="validity"></span>
+                </div>
+                <div class="form-group mx-4">
+                    <label class="col-sm-4 control-label" for="id_party_name">Party Name: </label>
+                    {{ form.party_name }}
+                    <span class="validity"></span>
+                </div>
+                <div class="form-group mx-4">
+                    <label class="col-sm-4 control-label" for="id_job_dc_no">Job No / DC No: </label>
+                    {{ form.job_dc_no }}
+                    <span class="validity"></span>
+                </div>
+                <div class="form-group mx-4">
+                    <label class="col-sm-4 control-label" for="mr_mill_counts"> Mill Counts</label>
+                    <input type="text" class="col-sm-8 form-control" id="mr_mill_counts" name="mr_mill_counts" required>
+                    <span class="validity"></span>
+                 </div>
+                 <div class="form-group mx-4">
+                    <label class="col-sm-4 control-label" for="mr_lot_no">Lot No</label>
+                    <input type="text" class="col-sm-8 form-control" id="mr_lot_no" name="mr_lot_no" required>
+                    <span class="validity"></span>
+                 </div>
+                 <div class="form-group mx-4">
+                    <label class="col-sm-4 control-label" for="mr_lycra_denier">Lycra Denier</label>
+                    <input type="text" class="col-sm-8 form-control" id="mr_lycra_denier" name="mr_lycra_denier" required>
+                    <span class="validity"></span>
+                 </div>
+                 <div class="form-group mx-4">
+                    <label class="col-sm-4 control-label" for="mr_mill_plyester">Mill Plyester</label>
+                    <input type="text" class="col-sm-8 form-control" id="mr_mill_plyester" name="mr_mill_plyester" required>
+                    <span class="validity"></span>
+                 </div>
+                 <div class="form-group mx-4">
+                    <label class="col-sm-4 control-label" for="prgm_dia">Dia</label>
+                    <input type="text" class="col-sm-8 form-control" id="prgm_dia" name="prgm_dia" required>
+                    <span class="validity"></span>
+                 </div>
+                 <div class="form-group mx-4">
+                    <label class="col-sm-4 control-label" for="prgm_gsm">GSM</label>
+                    <input type="text" class="col-sm-8 form-control" id="prgm_gsm" name="prgm_gsm" required>
+                    <span class="validity"></span>
+                 </div>
+                 <div class="form-group mx-4">
+                    <label class="col-sm-4 control-label" for="prgm_lopp_length">Lopp Length</label>
+                    <input type="text" class="col-sm-8 form-control" id="prgm_lopp_length" name="prgm_lopp_length" required>
+                    <span class="validity"></span>
+                 </div>
+                 <div class="form-group mx-4">
+                    <label class="col-sm-4 control-label" for="prgm_knitting_type">Knitting Type</label>
+                    <input type="text" class="col-sm-8 form-control" id="prgm_knitting_type" name="prgm_knitting_type" required>
+                    <span class="validity"></span>
+                 </div>
+                 <div class="form-group mx-4">
+                    <label class="col-sm-4 control-label" for="fabric_quality">Fabric Quality</label>
+                    <input type="text" class="col-sm-8 form-control" id="fabric_quality" name="fabric_quality" required>
+                    <span class="validity"></span>
+                 </div>
+                 <div class="form-group mx-4">
+                    <label class="col-sm-4 control-label" for="co_ordinator">Co Ordinator</label>
+                    <input type="text" class="col-sm-8 form-control" id="co_ordinator" name="co_ordinator" required>
+                    <span class="validity"></span>
+                 </div>
+                 <div class="form-group mx-4">
+                    <label class="col-sm-4 control-label" for="qc_instruction">Qc Instruction</label>
+                    <input type="text" class="col-sm-8 form-control" id="qc_instruction" name="qc_instruction" required>
+                    <span class="validity"></span>
+                 </div>
+                 <div class="form-group mx-4">
+                    <label class="col-sm-4 control-label" for="roll_no">Roll No</label>
+                    <input type="text" class="col-sm-8 form-control" id="roll_no" name="roll_no" required>
+                    <span class="validity"></span>
+                 </div>
+                 <div class="form-group mx-4">
+                    <label class="col-sm-4 control-label" for="start_time">Start Time</label>
+                    <input type="date" class="col-sm-8 form-control" id="start_time" name="start_time" required>
+                    <span class="validity"></span>
+                 </div>
+                 <div class="form-group mx-4">
+                    <label class="col-sm-4 control-label" for="end_time">End Time</label>
+                    <input type="date" class="col-sm-8 form-control" id="end_time" name="end_time" required>
+                    <span class="validity"></span>
+                 </div>
+                 <div class="form-group mx-4">
+                    <label class="col-sm-4 control-label" for="weight">Weight</label>
+                    <input type="text" class="col-sm-8 form-control" id="weight" name="weight" required>
+                    <span class="validity"></span>
+                 </div>
+                 <div class="form-group mx-4">
+                    <label class="col-sm-4 control-label" for="machine_counting">Machine Counting</label>
+                    <input type="text" class="col-sm-8 form-control" id="machine_counting" name="machine_counting" required>
+                    <span class="validity"></span>
+                 </div>
+                 <div class="form-group mx-4">
+                    <label class="col-sm-4 control-label" for="holes">Holes</label>
+                    <input type="text" class="col-sm-8 form-control" id="holes" name="holes" required>
+                    <span class="validity"></span>
+                 </div>
+                 <div class="form-group mx-4">
+                    <label class="col-sm-4 control-label" for="set_off">Set Off</label>
+                    <input type="text" class="col-sm-8 form-control" id="set_off" name="set_off" required>
+                    <span class="validity"></span>
+                 </div>
+                 <div class="form-group mx-4">
+                    <label class="col-sm-4 control-label" for="lycra_jump">Lycra Jump</label>
+                    <input type="text" class="col-sm-8 form-control" id="lycra_jump" name="lycra_jump" required>
+                    <span class="validity"></span>
+                 </div>
+                 <div class="form-group mx-4">
+                    <label class="col-sm-4 control-label" for="lycra_cut">lycra Cut</label>
+                    <input type="text" class="col-sm-8 form-control" id="lycra_cut" name="lycra_cut" required>
+                    <span class="validity"></span>
+                 </div>
+                 <div class="form-group mx-4">
+                    <label class="col-sm-4 control-label" for="polyester_mis_cut">Polyester Mis Cut</label>
+                    <input type="text" class="col-sm-8 form-control" id="polyester_mis_cut" name="polyester_mis_cut" required>
+                    <span class="validity"></span>
+                 </div>
+                 <div class="form-group mx-4">
+                    <label class="col-sm-4 control-label" for="contamination">Contamination</label>
+                    <input type="text" class="col-sm-8 form-control" id="contamination" name="contamination" required>
+                    <span class="validity"></span>
+                 </div>
+                 <div class="form-group mx-4">
+                    <label class="col-sm-4 control-label" for="thickyarn">Thickyarn</label>
+                    <input type="text" class="col-sm-8 form-control" id="thickyarn" name="thickyarn" required>
+                <span class="validity"></span>
+                 </div>
+                 <div class="form-group mx-4">
+                    <label class="col-sm-4 control-label" for="needle_line">Needle Line</label>
+                    <input type="text" class="col-sm-8 form-control" id="needle_line" name="needle_line" required>
+                <span class="validity"></span>
+                 </div>
+                 <div class="form-group mx-4">
+                    <label class="col-sm-4 control-label" for="oil_line">Oil Line</label>
+                    <input type="text" class="col-sm-8 form-control" id="oil_line" name="oil_line" required>
+                <span class="validity"></span>
+                 </div>
+                 <div class="form-group mx-4">
+                    <label class="col-sm-4 control-label" for="needel_br_t1">Needel Brakage T1</label>
+                    <input type="text" class="col-sm-8 form-control" id="needel_br_t1" name="needel_br_t1" required>
+                <span class="validity"></span>
+                 </div>
+                 <div class="form-group mx-4">
+                    <label class="col-sm-4 control-label" for="needel_br_t2">Needel Brakage T2</label>
+                    <input type="text" class="col-sm-8 form-control" id="needel_br_t2" name="needel_br_t2" required>
+                    <span class="validity"></span>
+                 </div>
+                 <div class="form-group mx-4">
+                    <label class="col-sm-4 control-label" for="needel_br_t3">needel Brakage T3</label>
+                    <input type="text" class="col-sm-8 form-control" id="needel_br_t3" name="needel_br_t3" required>
+                    <span class="validity"></span>
+                 </div>
+                 <div class="form-group mx-4">
+                    <label class="col-sm-4 control-label" for="needel_br_s">needel Brakage T</label>
+                    <input type="text" class="col-sm-8 form-control" id="needel_br_s" name="needel_br_s" required>
+                    <span class="validity"></span>
+                 </div>
+                 <div class="form-group mx-4">
+                    <label class="col-sm-4 control-label" for="remarks">Remarks</label>
+                    <input type="text" class="col-sm-8 form-control" id="remarks" name="remarks" required>
+                    <span class="validity"></span>
+                 </div>
+                 <div class="form-group mx-4">
+                    <label class="col-sm-4 control-label" for="order_qty">Order Qty</label>
+                    <input type="text" class="col-sm-8 form-control" id="order_qty" name="order_qty" required>
+                    <span class="validity"></span>
+                 </div>
+                 <div class="form-group mx-4">
+                    <label class="col-sm-4 control-label" for="completed_qty">Completed Qty</label>
+                    <input type="text" class="col-sm-8 form-control" id="completed_qty" name="completed_qty" required>
+                    <span class="validity"></span>
+                 </div>
+                 <div class="form-group mx-4">
+                    <label class="col-sm-4 control-label" for="balance_qty">Balance Qty</label>
+                    <input type="text" class="col-sm-8 form-control" id="balance_qty" name="balance_qty" required>
+                    <span class="validity"></span>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>    
+        </div>
+    </div>
+{% endblock %}

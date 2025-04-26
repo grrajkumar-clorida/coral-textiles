@@ -1,15 +1,15 @@
 
-<form method="POST" enctype="multipart/form-data">
+<form method="POST" enctype="multipart/form-data" id="machine-form" class="form-dpsr">
     {% csrf_token %}
-    <div class="form-group">
+    <div class="form-group mr-4">
         <label for="name">Name:</label>
         <input type="text" class="form-control" id="name" name="name" required>
     </div>
-    <div class="form-group">
+    <div class="form-group mr-4">
         <label for="date">Date:</label>
         <input type="date" class="form-control" id="date" name="date" required>
     </div>
-    <div class="form-group">
+    <div class="form-group mr-4">
         <label for="machine_id">Machine ID:</label>
         <select class="form-control" id="machine_id" name="machine_id">
             {% for machine in machines %}
@@ -17,7 +17,7 @@
             {% endfor %}
         </select>
     </div>
-    <div class="form-group">
+    <div class="form-group mr-4">
         <label for="lot_size">Lot Size:</label>
         <input type="number" class="form-control" id="lot_size" name="lot_size" required>
     </div>
