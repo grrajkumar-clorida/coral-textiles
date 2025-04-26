@@ -11,10 +11,14 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 import os
 from pathlib import Path
+from dotenv import load_dotenv
+load_dotenv()  # Load environment variables from a .env file
+
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+CSRF_TRUSTED_ORIGINS= [""]
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -25,7 +29,7 @@ SECRET_KEY = 'django-insecure-g7v9a%lu0_nm9%818a+9so5c%cgsw&r0@-9i6bzdnqq9x=+te8
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.railway.app', '.grrajkumar.in', '.pythonanywhere.com']
+ALLOWED_HOSTS = ['*']
 AUTH_USER_MODEL = 'employee.Employees'
 LOGIN_REDIRECT_URL = 'home'  # Redirect to home after login
 LOGOUT_REDIRECT_URL = 'login'  # Redirect to login after logout
@@ -48,6 +52,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -83,11 +88,11 @@ WSGI_APPLICATION = 'ProductionManagement.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 # Set default values for the environment variables if they’re not already set
-os.environ.setdefault("PGDATABASE", "railway")
-os.environ.setdefault("PGUSER", "root")
-os.environ.setdefault("PGPASSWORD", "IDYArWJWsjQDSUpICeGUiglTwhUivjLd")
-os.environ.setdefault("PGHOST", "mysql.railway.internal")
-os.environ.setdefault("PGPORT", "3306")
+os.environ.setdefault("PGDATABASE", ${{ MYSQL_DATABASE }})
+os.environ.setdefault("PGUSER", ${{ MYSQLUSER }})
+os.environ.setdefault("PGPASSWORD", ${{ MYSQL_ROOT_PASSWORD }})
+os.environ.setdefault("PGHOST", ${{ MYSQLPORT }})
+os.environ.setdefault("PGPORT", ${{ MYSQLPORT }})
 
 DATABASES = {
     'default': {
@@ -97,15 +102,16 @@ DATABASES = {
         'PASSWORD': os.environ["PGPASSWORD"],
         'HOST': os.environ["PGHOST"],
         'PORT': os.environ["PGPORT"],
-        'OPTIONS': {
-            'unix_socket': '/var/run/mysqld/mysqld.sock',  # Match your MySQL socket path
-        },
+        # 'OPTIONS': {
+        #     'unix_socket': '/var/run/mysqld/mysqld.sock',  # Match your MySQL socket path
+        # },
     }
 }
 
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -145,6 +151,7 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",  # For Django 3.2+
     os.path.join(BASE_DIR, "static"),  # For older versions of Django
 ]
+STATICSTORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = 'media/'

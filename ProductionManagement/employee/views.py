@@ -11,7 +11,8 @@ from django.contrib import messages
 
 # Create your views here.
 def home(request):
-    user = authenticate(username='bhuvi', password='demo@123')
+    uid, pid = 'bhuvi', 'demo@123'
+    user = authenticate(username=uid, password=pid)
     if user is not None:
         print("User authenticated successfully")
     else:
